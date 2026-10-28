@@ -1,0 +1,22 @@
+﻿name: Environment Practice
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  development:
+    runs-on: ubuntu-latest
+    environment: development
+    steps:
+      - name: Deploy to development
+        run: echo "Practice deployment to DEVELOPMENT successful"
+
+  staging:
+    runs-on: ubuntu-latest
+    needs: development
+    environment: staging
+    steps:
+      - name: Deploy to staging
+        run: echo "Practice deployment to STAGING successful"
