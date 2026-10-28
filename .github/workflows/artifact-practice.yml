@@ -1,0 +1,21 @@
+﻿name: Artifact Practice
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create report
+        run: |
+          mkdir output
+          echo "My first GitHub artifact" > output/report.txt
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: practice-report
+          path: output/report.txt
